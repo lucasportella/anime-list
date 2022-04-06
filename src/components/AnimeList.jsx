@@ -16,7 +16,7 @@ function AnimeList() {
   const renderAnimes = () => animes.map((anime) => (
     <section className="anime-section" key={anime.anilist_id}>
       <h3>{anime.titles.en ? anime.titles.en : anime.titles.rj}</h3>
-      <img src={anime.cover_image} alt="anime cover" />
+      <img src={anime.cover_image} alt="Anime Cover" />
     </section>
   ));
 
