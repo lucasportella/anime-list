@@ -11,7 +11,10 @@ function Provider({ children }) {
     setAnimes,
     nextPageNumber,
     setNextPageNumber,
-  }));
+  }), [animes,
+    setAnimes,
+    nextPageNumber,
+    setNextPageNumber]);
 
   return (
     <Context.Provider value={contextValue}>
