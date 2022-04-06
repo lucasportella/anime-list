@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { getAnimes, getNextPage } from '../API/aniapi';
+import React, { useEffect, useContext } from 'react';
+import Context from '../context/Context';
+import { getAnimes } from '../API/aniapi';
 
 function AnimeList() {
-  const [animes, setAnimes] = useState([]);
-  const [nextPageNumber, setNextPageNumber] = useState(1);
+  const { animes, setAnimes } = useContext(Context);
 
   const fetchData = async () => {
     const { data } = await getAnimes();
     setAnimes(data.data.documents);
   };
-
   useEffect(() => {
     fetchData();
   }, []);
@@ -21,23 +20,8 @@ function AnimeList() {
     </section>
   ));
 
-  const nextPage = async () => {
-    const number = nextPageNumber + 1;
-    const { data } = await getNextPage(number);
-    setAnimes(data.data.documents);
-    setNextPageNumber(number);
-  };
-
-  const prevPage = async () => {
-    const number = nextPageNumber - 1;
-    const { data } = await getNextPage(number);
-    setAnimes(data.data.documents);
-    setNextPageNumber(number);
-  };
   return (
     <div>
-      {nextPageNumber > 1 ? <button type="button" onClick={prevPage}>Previous Page</button> : null}
-      <button type="button" onClick={nextPage}>Next Page</button>
       {animes.length ? renderAnimes() : 'Loading...'}
     </div>
   );
