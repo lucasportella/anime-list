@@ -1,14 +1,12 @@
 import React from 'react';
 import './index.css';
 import Provider from './context/Provider';
-import Pagination from './components/Pagination';
-import AnimeList from './components/AnimeList';
+import Home from './pages/Home';
 
 function App() {
   return (
     <Provider>
-      <Pagination />
-      <AnimeList />
+      <Home />
     </Provider>
   );
 }
