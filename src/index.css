@@ -1,3 +1,7 @@
 .anime-section {
   border: solid rgb(183, 142, 67) 3px;
 }
+
+.anime-section-details {
+  display: flex;
+}
