@@ -1,42 +1,35 @@
-// import React from 'react';
-// import { useLocation } from 'react-router-dom';
+import React from 'react';
+import { useLocation } from 'react-router-dom';
 
-// function AnimeDetails() {
-//   const location = useLocation<Location>();
+interface Titles {
+  en: string;
+  rj: string;
+}
 
-  
-//   interface Titles {
-//     en: string;
-//     rj: string;
-//   }
-  
-//   interface State {
-//     banner_image: string;
-//     cover_image: string;
-//     descriptions: string;
-//     titles: Titles;
-//   }
-  
-//   interface Location {
-//     state: State
-//   }
+interface Descriptions {
+  en: string;
+}
 
-//   const {
-//     state: {
-//       banner_image, cover_image, descriptions, titles: { en, rj },
-//     },
-//   } = location;
+interface LocationState {
+  banner_image: string;
+  cover_image: string;
+  descriptions: Descriptions;
+  titles: Titles;
+}
+function AnimeDetails() {
+  const location = useLocation();
+  const state = location.state as LocationState
 
-//   return (
-//     <main>
-//       <img src={banner_image} alt="Anime Banner" style={{ maxWidth: '100%' }} />
-//       <h1>{en || rj}</h1>
-//       <section className="anime-section-details">
-//         <img src={cover_image} alt="Anime Cover" />
-//         <div dangerouslySetInnerHTML={{ __html: descriptions.en }} />
-//       </section>
-//     </main>
-//   );
-// }
+  return (
+    <main>
+      <img src={state.banner_image} alt="Anime Banner" style={{ maxWidth: '100%' }} />
+      <h1>{state.titles.en || state.titles.rj}</h1>
+      <section className="anime-section-details">
+        <img src={state.cover_image} alt="Anime Cover" />
+        <div dangerouslySetInnerHTML={{ __html: state.descriptions.en }} />
+      </section>
+    </main>
+  );
+}
 
-// export default AnimeDetails;
+export default AnimeDetails;
