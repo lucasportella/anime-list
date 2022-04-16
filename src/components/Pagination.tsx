@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import Context from '../context/Context';
+import { Context } from '../context/Provider';
 import { getNextPage } from '../API/aniapi';
 
 function Pagination() {
