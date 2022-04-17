@@ -1,13 +1,11 @@
-// import { createContext } from 'react';
+import { createContext } from 'react';
+import { Animes } from './contextInterfaces'
 
-// interface Animes {
-//     animes: object[],
-//     setAnimes: React.Dispatch<React.SetStateAction<object[]>>,
-//     nextPageNumber: number,
-//     setNextPageNumber: React.Dispatch<React.SetStateAction<number>>
+  const Context = createContext<Animes>({
+    animes: [],
+    setAnimes: () => {},
+    nextPageNumber: 1,
+    setNextPageNumber: () => {}
+    });
 
-//   }
-
-// const Context = createContext<{}>({});
-
-// export default Context;
+export default Context;

@@ -1,38 +1,7 @@
-import React, { useState, useMemo, createContext } from 'react';
+import React, { useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
-// import Context from './Context';
-
-interface Animes {
-  animes: Anime[],
-  setAnimes: React.Dispatch<React.SetStateAction<Anime[]>>,
-  nextPageNumber: number,
-  setNextPageNumber: React.Dispatch<React.SetStateAction<number>>
-
-}
-
-interface Anime {
-  anilist_id: number,
-  titles: Titles,
-  cover_image: string,
-}
-
-interface Titles {
-  rj: 'string';
-  en?: 'string'
-}
-
-
-const Context = createContext<Animes>({
-animes: [],
-setAnimes: () => {},
-nextPageNumber: 1,
-setNextPageNumber: () => {}
-});
-
-
-interface ProviderProps {
-  children: React.ReactNode,
-}
+import Context from './Context';
+import { Animes, Anime } from './contextInterfaces';
 
 function Provider({ children }) {
   const [animes, setAnimes] = useState<Anime[]>([]);
